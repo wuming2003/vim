@@ -7,6 +7,11 @@ if has('unix')
     set runtimepath-=/usr/share/vim/vimfiles/after
     set nocompatible
     source $VIMRUNTIME/vimrc_example.vim
+else
+    set nocompatible
+    source $VIMRUNTIME/vimrc_example.vim
+    source $VIMRUNTIME/mswin.vim
+    behave mswin
 endif
 
 " -------------------------------------------------------------------------------------------------
@@ -24,7 +29,10 @@ filetype plugin indent on
 " -------------------------------------------------------------------------------------------------
 " global configure
 " -------------------------------------------------------------------------------------------------
-set vb t_vb=
+if has('win32')
+    set vb t_vb=
+    au GuiEnter * set t_vb=
+endif
 set mouse=
 if has("gui_running")
     set mouse=a
@@ -53,6 +61,7 @@ endif
 if has('win32')
     source $VIMRUNTIME/ftplugin/man.vim
     nmap K :Man <cword><CR>
+    let $PATH .= expand(";$HOME/vimfiles/bin/")
 endif
 
 " 启动最大化
