@@ -3,6 +3,8 @@
 " Create by yangrz
 " -------------------------------------------------------------------------------------------------
 if has('unix')
+    set runtimepath-=/usr/share/vim/vimfiles
+    set runtimepath-=/usr/share/vim/vimfiles/after
     set nocompatible
     source $VIMRUNTIME/vimrc_example.vim
 endif

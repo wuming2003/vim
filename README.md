@@ -4,11 +4,14 @@
    cd %HOME%
    git clone https://github.com/wuming2003/vim.git vimfiles
    ```
-2. 安装python所需文件
+2. 安装python所需文件(可选)
    ```
    pip install jedi
    pip install flake8
    ```
+3. 安装shellcheck(可选)
+   下载 https://storage.googleapis.com/shellcheck/shellcheck-stable.zip，并拷贝到%PATH%路径下
+
 Windows安装包可以从
 ftp://ftp.vim.org/pub/vim/pc/gvim81.exe
 下载
@@ -20,19 +23,32 @@ ftp://ftp.vim.org/pub/vim/pc/gvim81.exe
    ```
 2. 拷贝文件
    ```
-   cp -af .vim/bin/* /usrlocal/bin
+   cp -af .vim/bin/* /usr/local/bin
    ```
-3. 安装python所需文件
+3. 安装python所需文件(可选)
    ```
    pip install jedi
    pip install flake8
    ```
-4. 配置
+4. 安装shellcheck(可选)
+   ```
+   curl https://storage.googleapis.com/shellcheck/shellcheck-stable.linux.x86_64.tar.xz
+   tar -xvf shellcheck-stable.linux.x86_64.tar.xz
+   cp shellcheck-stable/shellcheck /usr/local/bin
+   ```
+
+5. 配置
    修改.bashrc，添加
    ```
    export GIT_EDITOR=vim
    alias svnvidiff='svn diff --diff-cmd svn-diff-vim'
    export SVN_EDITOR=vi
+   alias vi='vim'
+   ```
+   如果想禁用系统的/etc/vimrc，可以在.bashrc中加入
+   ```
+   alias vim='vim -u ~/.vim/vimrc'
+   alias vi='vim -u ~/.vim/vimrc'
    ```
 
 # Linux从代码编译vim
@@ -51,5 +67,3 @@ sudo make install
 ```
 export PATH=/opt/vim/bin:$PATH
 ```
-
-
