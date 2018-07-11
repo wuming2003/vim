@@ -1,0 +1,18 @@
+#!/bin/sh
+
+TEST_FILE_NAME="__invalid_test__"
+
+function Usage()
+{
+    echo "git-vim [status]"
+    echo "        log    [path]"
+}
+
+if [ x"$1" == x"status" -o x"$1" == x"" ];then
+    vim "+Gstatus" "+tabo" -R $TEST_FILE_NAME
+elif [ x"$1" == x"log" ];then
+    vim "+Gitv $2" "+tabo" -R $TEST_FILE_NAME
+else
+    Usage
+    exit 1
+fi

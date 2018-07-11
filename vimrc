@@ -19,7 +19,6 @@ endif
 
 "disable jedi warning
 let g:jedi#squelch_py_warning = 1
-" -------------------------------------------------------------------------------------------------
 " pack manager
 " -------------------------------------------------------------------------------------------------
 execute pathogen#infect('bundle/default/{}')
@@ -75,7 +74,7 @@ endif
 if has('win32')
     source $VIMRUNTIME/ftplugin/man.vim
     nmap K :Man <cword><CR>
-    let $PATH .= expand(";$HOME/vimfiles/bin/")
+    let $PATH .= expand(";$HOME/vimfiles/bin/win32")
 endif
 
 " 启动最大化
@@ -189,6 +188,9 @@ iabbrev $//$ <ESC>ddO//---------------------------------------------------------
 " -------------------------------------------------------------------------------------------------
 " Gitv configure
 let g:Gitv_OpenHorizontal = 1
+set diffopt+=vertical
+noremap qq :tabc<CR>
+
 
 " ale configure
 let g:ale_lint_on_enter = 0

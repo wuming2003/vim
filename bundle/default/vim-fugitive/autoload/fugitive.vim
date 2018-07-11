@@ -900,8 +900,9 @@ augroup END
 
 function! s:Status(bang, count, mods) abort
   try
-    exe (a:mods ==# '<mods>' ? '' : a:mods) 'Gpedit :'
-    wincmd P
+    "exe (a:mods ==# '<mods>' ? '' : a:mods) 'Gedit :'
+    exe (a:mods ==# '<mods>' ? '' : a:mods) 'Gtabedit :'
+    "wincmd P
     setlocal foldmethod=syntax foldlevel=1 buftype=nowrite
     nnoremap <buffer> <silent> q    :<C-U>bdelete<CR>
   catch /^fugitive:/
@@ -1035,13 +1036,13 @@ function! s:StageDiff(diff) abort
     return 'Git! diff --no-ext-diff'
   elseif filename =~# ' -> '
     let [old, new] = split(filename,' -> ')
-    execute 'Gedit '.s:fnameescape(':0:'.new)
+    execute 'Gtabedit '.s:fnameescape(':0:'.new)
     return a:diff.' HEAD:'.s:fnameescape(old)
   elseif section ==# 'staged'
-    execute 'Gedit '.s:fnameescape(':0:'.filename)
+    execute 'Gtabedit '.s:fnameescape(':0:'.filename)
     return a:diff.' -'
   else
-    execute 'Gedit '.s:fnameescape('/'.filename)
+    execute 'Gtabedit '.s:fnameescape('/'.filename)
     return a:diff
   endif
 endfunction
@@ -2740,6 +2741,7 @@ function! fugitive#BufReadStatus() abort
     nnoremap <buffer> <silent> cva :<C-U>Gcommit -v --amend<CR>
     nnoremap <buffer> <silent> cvc :<C-U>Gcommit -v<CR>
     nnoremap <buffer> <silent> D :<C-U>execute <SID>StageDiff('Gdiff')<CR>
+    nnoremap <buffer> <silent> O :<C-U>execute <SID>StageDiff('Gdiff')<CR>
     nnoremap <buffer> <silent> dd :<C-U>execute <SID>StageDiff('Gdiff')<CR>
     nnoremap <buffer> <silent> dh :<C-U>execute <SID>StageDiff('Gsdiff')<CR>
     nnoremap <buffer> <silent> ds :<C-U>execute <SID>StageDiff('Gsdiff')<CR>
@@ -2954,7 +2956,7 @@ function! fugitive#MapCfile(...) abort
 endfunction
 
 function! fugitive#MapJumps(...) abort
-  nnoremap <buffer> <silent> <CR>    :<C-U>exe <SID>GF("edit")<CR>
+  "nnoremap <buffer> <silent> <CR>    :<C-U>exe <SID>GF("edit")<CR>
   if !&modifiable
     nnoremap <buffer> <silent> o     :<C-U>exe <SID>GF("split")<CR>
     nnoremap <buffer> <silent> S     :<C-U>exe <SID>GF("vsplit")<CR>

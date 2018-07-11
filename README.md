@@ -26,7 +26,12 @@ https://github.com/wuming2003/vim/releases/download/depend/gvim81.exe
    ```
    git clone https://github.com/wuming2003/vim.git ~/.vim
    ```
-2. 拷贝文件
+2. 配置一些有用的脚本(可选)
+   修改.bashrc，添加
+   ```
+   export PAHT=~/.vim/bin:$PATH
+   ```
+   或者
    ```
    cp -af .vim/bin/* /usr/local/bin
    ```
