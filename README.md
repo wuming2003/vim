@@ -1,7 +1,7 @@
 # Windows
 1. 下载代码：
    ```
-   cd %HOME%
+   cd %USERPROFILE%
    git clone https://github.com/wuming2003/vim.git vimfiles
    ```
 2. 安装python所需文件(可选)
