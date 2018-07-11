@@ -1,7 +1,10 @@
 " vim:set ts=4 et sts=4 sw=4 ft=vim:
 " -------------------------------------------------------------------------------------------------
-" Create by yangrz
+" Create by wuming
 " -------------------------------------------------------------------------------------------------
+let g:author_mail="yangrz@centerm.com"
+let g:author="yangrz"
+
 if has('unix')
     set runtimepath-=/usr/share/vim/vimfiles
     set runtimepath-=/usr/share/vim/vimfiles/after
@@ -14,6 +17,8 @@ else
     behave mswin
 endif
 
+"disable jedi warning
+let g:jedi#squelch_py_warning = 1
 " -------------------------------------------------------------------------------------------------
 " pack manager
 " -------------------------------------------------------------------------------------------------
@@ -107,9 +112,7 @@ endif
 au GUIEnter * set foldcolumn=4
 
 " 改变颜色方案
-colorscheme yangrz
-
-let g:author="yangrz@centerm.com"
+colorscheme wuming
 
 " taglist插件设置
 let Tlist_Exit_OnlyWindow=1
@@ -197,12 +200,12 @@ imap <C-j> <C-X><C-O>
 " 词简写
 "------------------------------------------------------------------------------
 if has('win32')
-    iabbrev <silent> $C$ Change by yangrz, <C-R>=strftime("%x", localtime())<CR>
-    iabbrev <silent> $A$ Add by yangrz, <C-R>=strftime("%x", localtime())<CR>
+    iabbrev <silent> $C$ Change by <C-R>=g:author<CR>, <C-R>=strftime("%x", localtime())<CR>
+    iabbrev <silent> $A$ Add by <C-R>g:author<CR>, <C-R>=strftime("%x", localtime())<CR>
     iabbrev <silent> $DATE$ <C-R>=strftime("%x", localtime())<CR>
 else
-    iabbrev <silent> $C$ Change by yangrz, <C-R>=strftime("%F", localtime())<CR>
-    iabbrev <silent> $A$ Add by yangrz, <C-R>=strftime("%F", localtime())<CR>
+    iabbrev <silent> $C$ Change by <C-R>=g:author<CR>, <C-R>=strftime("%F", localtime())<CR>
+    iabbrev <silent> $A$ Add by <C-R>g:author<CR>, <C-R>=strftime("%F", localtime())<CR>
     iabbrev <silent> $DATE$ <C-R>=strftime("%F", localtime())<CR>
 endif
 
