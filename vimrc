@@ -297,7 +297,6 @@ function! s:PythonConfig()
     let g:jedi#auto_vim_configuration = 0
     setlocal completeopt=menu
     let g:jedi#show_call_signatures_delay = 50
-    set fileencoding=utf-8
 endfun
 
 au filetype python     call s:PythonConfig()
