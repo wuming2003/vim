@@ -42,6 +42,7 @@ set mouse=
 if has("gui_running")
     set mouse=a
 endif
+
 "  隐藏工具栏
 set guioptions-=T      
 
@@ -56,6 +57,14 @@ if has('win32')
     language messages zh_CN.utf-8
     let &termencoding=&encoding
     set fileencoding=cp936
+endif
+
+" 改变编码方式
+if has('unix')
+    set encoding=utf-8
+    set fileencoding=utf-8
+    set fileencodings=ucs-bom,utf-8,cp936
+    set ambiwidth=double
 endif
 
 if has('unix')
@@ -73,26 +82,6 @@ endif
 if has('win32')
     au GUIEnter * simalt ~x
 endif
-
-" -------------------------------------------------------------------------------------------------
-" plugin configure
-" -------------------------------------------------------------------------------------------------
-" Gitv configure
-let g:Gitv_OpenHorizontal = 1
-
-" ale configure
-let g:ale_lint_on_enter = 0
-let g:ale_set_signs = 0
-let g:ale_set_quickfix = 1
-" let g:ale_linters = {
-" \   'c++': ['clang'],
-" \   'c': ['clang'],
-" \   'python': ['pylint'],
-" \}
- let g:ale_linters = {
- \   'python': ['flake8'],
- \}
-
 
 function! GnomeMaxWindow()
     exe 'silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz'
@@ -113,15 +102,6 @@ au GUIEnter * set foldcolumn=4
 
 " 改变颜色方案
 colorscheme wuming
-
-" taglist插件设置
-let Tlist_Exit_OnlyWindow=1
-let Tlist_Show_One_File=1
-let Tlist_Use_Right_Window=1
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_Enable_Fold_Column=0
-" 设置打开taglist的快捷建
-noremap <F8> :TlistToggle<CR>
 
 " 关闭自动生成备份文件的功能
 set nobackup
@@ -179,14 +159,6 @@ command! -nargs=0 Header :call AddFileHeadComment()
 " 搜索大小写设置
 set ignorecase smartcase
 
-" 改变编码方式
-if has('unix')
-    set encoding=utf-8
-    set fileencoding=utf-8
-    set fileencodings=ucs-bom,utf-8,cp936
-    set ambiwidth=double
-endif
-
 " 设置tab页的显示文本
 set guitablabel=%t
 if has('gui_running') && has('unix')
@@ -210,6 +182,35 @@ else
 endif
 
 iabbrev $//$ <ESC>ddO//------------------------------------------------------------------------------
+
+
+" -------------------------------------------------------------------------------------------------
+" plugin configure
+" -------------------------------------------------------------------------------------------------
+" Gitv configure
+let g:Gitv_OpenHorizontal = 1
+
+" ale configure
+let g:ale_lint_on_enter = 0
+let g:ale_set_signs = 0
+let g:ale_set_quickfix = 1
+" let g:ale_linters = {
+" \   'c++': ['clang'],
+" \   'c': ['clang'],
+" \   'python': ['pylint'],
+" \}
+ let g:ale_linters = {
+ \   'python': ['flake8'],
+ \}
+
+" taglist插件设置
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Show_One_File=1
+let Tlist_Use_Right_Window=1
+let Tlist_File_Fold_Auto_Close=1
+let Tlist_Enable_Fold_Column=0
+" 设置打开taglist的快捷建
+noremap <F8> :TlistToggle<CR>
 
 "------------------------------------------------------------------------------
 " 公用函数
@@ -296,6 +297,7 @@ function! s:PythonConfig()
     let g:jedi#auto_vim_configuration = 0
     setlocal completeopt=menu
     let g:jedi#show_call_signatures_delay = 50
+    set fileencoding=utf-8
 endfun
 
 au filetype python     call s:PythonConfig()

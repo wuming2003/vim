@@ -1,21 +1,25 @@
 # Windows
+Windows vim安装包可以从
+https://github.com/wuming2003/vim/releases/download/depend/gvim81.exe
+下载
 1. 下载代码：
    ```
    cd %USERPROFILE%
    git clone https://github.com/wuming2003/vim.git vimfiles
    ```
 2. 安装python所需文件(可选)
-   python安装包可以从https://github.com/wuming2003/vim/releases/download/depend/python-2.7.14.msi下载
+   python安装包可以从 
+   https://github.com/wuming2003/vim/releases/download/depend/python-2.7.14.msi 
+   下载
    ```
    pip install jedi
    pip install flake8
    ```
 3. 安装shellcheck(可选)
-   下载https://github.com/wuming2003/vim/releases/download/depend/shellcheck-stable.zip，并拷贝到%PATH%路径下
+   下载 
+   https://github.com/wuming2003/vim/releases/download/depend/shellcheck-stable.zip 
+   并拷贝到%PATH%路径下
 
-Windows安装包可以从
-https://github.com/wuming2003/vim/releases/download/depend/gvim81.exe
-下载
 
 # Linux
 1. 下载代码：
@@ -54,17 +58,17 @@ https://github.com/wuming2003/vim/releases/download/depend/gvim81.exe
 
 # Linux从代码编译vim
 1. 下载代码
-```
+   ```
    git clone https://github.com/vim/vim
-```
+   ```
 2. 编译
-```
-./configure --enable-pythoninterp=yes --prefix=/opt/vim/
-make 
-sudo make install
-```
+   ```
+   ./configure --enable-pythoninterp=yes --prefix=/opt/vim/
+   make 
+   sudo make install
+   ```
 3. 配置
 修改.bashrc，添加
-```
-export PATH=/opt/vim/bin:$PATH
-```
+   ```
+   export PATH=/opt/vim/bin:$PATH
+   ```
