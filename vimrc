@@ -6,6 +6,7 @@ let g:author_mail="yangrz@centerm.com"
 let g:author="yangrz"
 
 if has('unix')
+    set clipboard=autoselect,exclude:.* 
     set runtimepath-=/usr/share/vim/vimfiles
     set runtimepath-=/usr/share/vim/vimfiles/after
     set nocompatible
