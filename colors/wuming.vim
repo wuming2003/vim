@@ -4,12 +4,12 @@
 " Maintainer:	Ron Aaron <ron@ronware.org>
 " Last Change:	2003 May 02
 
-hi clear
+"hi clear
 set background=dark
 if exists("syntax_on")
   syntax reset
 endif
-let g:colors_name = "yangrz"
+let g:colors_name = "wuming2003"
 
 "hi Normal		ctermbg=Black  ctermfg=lightgreen guibg=Black		 guifg=lightgreen
 hi Normal		ctermbg=Black  ctermfg=White guibg=Black		 guifg=gray
@@ -42,3 +42,15 @@ hi Title		term=bold	   ctermfg=LightMagenta gui=bold	guifg=Pink
 hi WarningMsg	term=standout  ctermfg=LightRed   guifg=Red
 hi Visual		term=reverse   cterm=reverse	  gui=NONE		guifg=white guibg=darkgreen
 hi FoldColumn	term=reverse   cterm=reverse	  gui=NONE		guibg=Black guifg=lightgreen
+
+" hi Underlined	guifg=cyan		ctermfg=cyan	gui=underline	cterm=underline
+" hi label		guifg=yellow	ctermfg=yellow
+" hi operator		guifg=orange	gui=bold	ctermfg=lightRed	ctermbg=darkBlue
+" hi VertSplit	gui=none	guifg=blue	guibg=blue	ctermfg=blue	ctermbg=blue
+" hi DiffChange	guibg=darkGreen		guifg=black	ctermbg=darkGreen	ctermfg=black
+" hi DiffText		guibg=olivedrab		guifg=black		ctermbg=lightGreen	ctermfg=black
+" hi DiffAdd		guibg=slateblue		guifg=black		ctermbg=blue		ctermfg=black
+" hi DiffDelete   guibg=coral			guifg=black	ctermbg=cyan		ctermfg=black
+" hi Folded		guibg=orange		guifg=black		ctermbg=yellow		ctermfg=black
+" hi FoldColumn	guibg=gray30		guifg=black	ctermbg=gray		ctermfg=black
+" hi cIf0			guifg=gray			ctermfg=gray

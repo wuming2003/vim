@@ -24,6 +24,10 @@ let g:jedi#squelch_py_warning = 1
 execute pathogen#infect('bundle/default/{}')
 if v:version >= 800
     execute pathogen#infect('bundle/vim8/{}')
+    packadd termdebug
+    tnoremap <Esc> <C-W>N
+    set notimeout ttimeout timeoutlen=100
+    let g:termdebug_wide = 163
 else
     execute pathogen#infect('bundle/vim7/{}')
 endif
