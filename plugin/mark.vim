@@ -289,6 +289,34 @@ function! mark#CurrentMark()
 	return ['', []]
 endfunction
 
+function! mark#get_visual_selection()
+    " Why is this not a built-in Vim script function?!
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
+endfunction
+
+function! mark#MarkCurrentSelect()
+	let l:regexp = mark#CurrentMark()[0]
+	if empty(l:regexp)
+		let l:cword = mark#get_visual_selection()
+		if ! empty(l:cword)
+			let l:regexp = s:EscapeText(l:cword)
+		endif
+	endif
+
+	if ! empty(l:regexp)
+        let @/ = l:regexp
+		call mark#DoMark(l:regexp)
+	endif
+endfunction
+
 "- initializations ------------------------------------------------------------
 augroup Mark
 	autocmd!
@@ -334,10 +362,12 @@ autocmd ColorScheme * call <SID>DefaultHighlightings()
 
 "- mappings -------------------------------------------------------------------
 nnoremap <silent> <Plug>MarkSet   :<C-u>call mark#MarkCurrentWord()<CR>:noh<CR>
+vnoremap <silent> <Plug>MarkVset :<C-u>call mark#MarkCurrentSelect()<CR>:noh<CR>
 nnoremap <silent> <Plug>MarkAllClear :<C-u>call mark#ClearAll()<CR>:noh<CR>
 
 if !hasmapto('<Plug>MarkSet', 'n')
   nmap <unique> <silent> mm <Plug>MarkSet
+  vmap <unique> <silent> mm <Plug>MarkVset
   nmap <unique> <silent> mc <Plug>MarkAllClear
 endif
 
