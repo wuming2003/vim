@@ -324,6 +324,7 @@ function! s:VimConfig()
 endfun
 
 au filetype vim        call s:VimConfig()
+au filetype cmake      call s:FileTabChange()
 
 "------------------------------------------------------------------------------
 " perl
