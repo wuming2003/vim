@@ -275,13 +275,8 @@ function! s:CFileConfig()
     call s:FoldMethod("syntax", 1)
 
     " 代码格式化的快捷键
-    if has('win32')
-        noremap <buffer> <F10> me:%!vindent.bat<CR>'e
-        vnoremap <buffer> <F10> :!vindent.bat<CR>
-    elseif has('unix')
-        noremap <buffer> <F10> me:%!vindent.sh<CR>'e
-        vnoremap <buffer> <F10> :!vindent.sh<CR>
-    endif
+    noremap <buffer> <F10> me:%!myastyle<CR>'e
+    vnoremap <buffer> <F10> :!myastyle<CR>
 
     " 添加函数头注释的快捷键
     noremap <buffer> <silent> <C-F> :Dox<CR>
