@@ -202,7 +202,7 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_save = 1
 let g:ale_set_signs = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_quickfix = 0
 " let g:ale_linters = {
 " \   'c++': ['clang'],
 " \   'c': ['clang'],
@@ -220,6 +220,9 @@ let Tlist_File_Fold_Auto_Close=1
 let Tlist_Enable_Fold_Column=0
 " 设置打开taglist的快捷建
 noremap <F8> :TlistToggle<CR>
+
+" fastfold
+let g:fastfold_fold_command_suffixes = []
 
 "------------------------------------------------------------------------------
 " 公用函数
